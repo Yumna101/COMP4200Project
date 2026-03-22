@@ -42,7 +42,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter New Name"
-        android:inputType="textPassword"
         android:layout_marginTop="10dp"/>
     <Button
         android:id="@+id/btn_saveName"

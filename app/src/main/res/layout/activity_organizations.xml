@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Search Bar -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:queryHint="Search organizations..." />
+
+    <!-- RecyclerView for organizations -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOrganizations"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@color/white" />
+
+    <!-- Empty state (shown when no results found) -->
+    <LinearLayout
+        android:id="@+id/layoutEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No organizations found"
+            android:textSize="16sp"
+            android:textColor="#888888" />
+
+    </LinearLayout>
+
+    <!-- ADDED: Save button fixed at bottom of screen -->
+    <Button
+        android:id="@+id/btn_saveOrg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Organization"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

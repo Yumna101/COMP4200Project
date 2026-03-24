@@ -7,6 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.*;
 
+// Snackbar is used to show short messages at the bottom of the screen
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AlertDialog; //import for alertDialog
+import android.content.DialogInterface;    //import for alertDialog
+import android.view.View;
+
 public class profile_activity extends AppCompatActivity {
 
     TextView tv_name, tv_email, tv_role;
@@ -56,14 +62,27 @@ public class profile_activity extends AppCompatActivity {
             String confirm = et_confirm.getText().toString().trim();
 
             if(!pass.equals(confirm)){
-                Toast.makeText(this,"Passwords do not match",Toast.LENGTH_SHORT).show();
+                Snackbar.make(v, "Passwords do not match", Snackbar.LENGTH_LONG).show();
                 return;
             }
 
-            spe.putString("password",pass);
-            spe.apply();
+            // Build an AlertDialog to confirm reset action
+            AlertDialog.Builder builder = new AlertDialog.Builder(profile_activity.this);
 
-            Toast.makeText(this,"Profile Updated",Toast.LENGTH_SHORT).show();
+            builder.setTitle("Alert!");
+            builder.setMessage("Do you want to change password?");
+
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                spe.putString("password", pass);
+                spe.apply();
+
+                Toast.makeText(profile_activity.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+            });
+
+            builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+
+            builder.setCancelable(false);
+            builder.show();
         });
 
         btn_back.setOnClickListener(v -> {

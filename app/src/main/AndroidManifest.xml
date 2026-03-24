@@ -17,6 +17,7 @@
         <activity android:name=".profile_activity"/>
         <activity android:name=".admin_dashboard_activity"/>
         <activity android:name=".volunteer_goal_activity"/>
+        <activity android:name=".choose_org_activity"/>
         <activity
             android:name=".main_activity"
             android:exported="true">
